@@ -39,11 +39,16 @@ public class PlayerController : MonoBehaviour
     public float wallJJumpDirection = -1f;
     public Vector2 wallJumpAngle;
 
+     [Header(" For Sound System")]
+    public AudioSource src;
+    public int jumpSound;
+    public int dashSound;
+
     private Rigidbody2D rb;
     private Animator animator;
     private float xAxis;
     private float yAxis;
-
+   
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,11 +77,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             throwJump = true;
+            src.PlayOneShot(Camera.main.GetComponent<mixer>().GetSound(jumpSound));
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
         {
             throwDash = true;
+            src.PlayOneShot(Camera.main.GetComponent<mixer>().GetSound(dashSound));
         }
 
         xAxisHolding = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
