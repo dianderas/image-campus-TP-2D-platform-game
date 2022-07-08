@@ -202,19 +202,19 @@ TextureImporter:
     second: sprites_65
   - first:
       213: 3026130483469327200
-    second: sprites_66
+    second: slide_0
   - first:
       213: -5404917630374751943
-    second: sprites_67
+    second: slide_1
   - first:
       213: 1556287028122769168
-    second: sprites_68
+    second: slide_2
   - first:
       213: -8564791059882666291
-    second: sprites_69
+    second: jump_wall_0
   - first:
       213: 1901097361567403819
-    second: sprites_70
+    second: jump_wall_1
   - first:
       213: 7286473914490883674
     second: sprites_71
@@ -1834,7 +1834,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_66
+      name: slide_0
       rect:
         serializedVersion: 2
         x: 8
@@ -1855,7 +1855,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_67
+      name: slide_1
       rect:
         serializedVersion: 2
         x: 35
@@ -1876,7 +1876,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_68
+      name: slide_2
       rect:
         serializedVersion: 2
         x: 64
@@ -1897,7 +1897,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_69
+      name: jump_wall_0
       rect:
         serializedVersion: 2
         x: 97
@@ -1918,7 +1918,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_70
+      name: jump_wall_1
       rect:
         serializedVersion: 2
         x: 127

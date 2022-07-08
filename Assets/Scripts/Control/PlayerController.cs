@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 wallCheckSize;
     public bool isTouchingWall;
     public bool isWallSliding;
+    public bool xAxisHolding;
 
     [Header("For WallJumping")]
     public float wallJumpForce = 18f;
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             throwJump = true;
         }
@@ -77,6 +78,8 @@ public class PlayerController : MonoBehaviour
         {
             throwDash = true;
         }
+
+        xAxisHolding = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
     }
 
     private void InteractWithMovement()
@@ -85,11 +88,22 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        Walk();
-        WallSlide();
-        WallJump();
 
-        if (throwJump)
+        if (!isWallSliding)
+        {
+            Walk();
+        }
+
+        WallSlide();
+
+
+        if (isWallSliding && throwJump)
+        {
+            animator.SetTrigger("wallJumping");
+            WallJump();
+        }
+
+        if (throwJump && isGrounded)
         {
             isJumping = true;
             throwJump = false;
@@ -124,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        Debug.Log("Regular Jump");
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += Vector2.up * jumpForce;
     }
@@ -131,6 +146,7 @@ public class PlayerController : MonoBehaviour
     private void Walk()
     {
         var direction = new Vector2(xAxis, yAxis);
+
         rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
         if (direction != Vector2.zero)
@@ -177,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     private void WallSlide()
     {
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        if (isTouchingWall && !isGrounded && rb.velocity.y < 0 && xAxisHolding)
         {
             isWallSliding = true;
         }
@@ -186,6 +202,7 @@ public class PlayerController : MonoBehaviour
             isWallSliding = false;
         }
 
+        // wall slide
         if (isWallSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed);
@@ -195,7 +212,11 @@ public class PlayerController : MonoBehaviour
 
     private void WallJump()
     {
-
+        var force = new Vector2(wallJumpForce * wallJJumpDirection * wallJumpAngle.x,
+            wallJumpForce * wallJumpAngle.y);
+        Debug.Log("WallJump");
+        rb.AddForce(force, ForceMode2D.Impulse);
+        throwJump = false;
     }
 
     private void CheckWorld()
@@ -210,6 +231,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("jumping", isJumping);
         animator.SetBool("walking", isWalking);
         animator.SetBool("dashing", isDashing);
+        animator.SetBool("sliding", isWallSliding);
     }
 
     private void OnDrawGizmos()
