@@ -427,17 +427,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   collisionRadio: 0.1
-  wallSlideSpeed: 0
+  wallSlideSpeed: -1
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
   wallCheckPoint: {fileID: 136645719}
   wallCheckSize: {x: 0.05, y: 1}
-  isTouchingWall: 0
+  isTouchingWall: 1
   isWallSliding: 0
+  xAxisHolding: 0
   wallJumpForce: 6
   wallJJumpDirection: -1
-  wallJumpAngle: {x: 1, y: 3}
+  wallJumpAngle: {x: 1, y: 1.2}
   src: {fileID: 1317577619}
   jumpSound: 0
   dashSound: 1
