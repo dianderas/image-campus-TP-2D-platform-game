@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject character;
+    public CharacterData characterData;
 
     [Header("For Movement")]
     public float speed = 10f;
@@ -20,10 +21,12 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public LayerMask groundLayer;
     public float collisionRadio;
-    private bool isGrounded = true;
+    public Transform groundCheckPoint;
+    public bool isGrounded = true;
     private bool throwJump;
     private bool isJumping;
     private float velocityY;
+    private int amountOfJumpsLeft;
 
     [Header("For WallSliding")]
     public float wallSlideSpeed = 0f;
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = character.GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -60,15 +64,13 @@ public class PlayerController : MonoBehaviour
         //if (health.IsDead()) return;
         //if (InteractWithCombat);
         Inputs();
-        CheckWorld();
+        CheckWorld(); 
     }
-
     private void FixedUpdate()
     {
         InteractWithMovement();
         AnimationControl();
     }
-
     private void Inputs()
     {
         xAxis = Input.GetAxis("Horizontal");
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             throwJump = true;
+            DecreaseAmountOfJumpsLeft();
             src.PlayOneShot(Camera.main.GetComponent<mixer>().GetSound(jumpSound));
         }
 
@@ -225,13 +228,38 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(force, ForceMode2D.Impulse);
         throwJump = false;
     }
-
-    private void CheckWorld()
+    public bool CanJump()
     {
-        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position, collisionRadio, groundLayer);
-        isTouchingWall = Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
+        if (amountOfJumpsLeft > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
+    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = characterData.amountOfJumps;
+
+    public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
+    private void CheckWorld()
+    {
+        isGrounded = CheckIfGrounded();
+        if (isGrounded)
+        {
+            ResetAmountOfJumpsLeft();
+        }
+        isTouchingWall = CheckIfTouchingWall();
+    }
+    public bool CheckIfGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheckPoint.position, collisionRadio, groundLayer);
+    }
+    public bool CheckIfTouchingWall()
+    {
+        return Physics2D.OverlapBox(wallCheckPoint.position, wallCheckSize, 0, wallLayer);
+    }
     private void AnimationControl()
     {
         animator.SetFloat("verticalVelocity", velocityY);
@@ -245,7 +273,7 @@ public class PlayerController : MonoBehaviour
     {
         // ground check
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, collisionRadio);
+        Gizmos.DrawWireSphere(groundCheckPoint.position, collisionRadio);
         // wall check
         Gizmos.color = Color.green;
         Gizmos.DrawCube(wallCheckPoint.position, wallCheckSize);
