@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject character;
+    private GameObject character;
     public CharacterData characterData;
+    public CharacterTypeVariable currentCharacter;
 
     [Header("For Movement")]
     public float speed = 10f;
@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("For Dash")]
     public float dashForce = 20f;
     public float dashTime = 0.2f;
-    private bool isDashing;
+    public bool isDashing;
     private bool throwDash;
 
     [Header("For Jump")]
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = true;
     private bool throwJump;
     private bool isJumping;
+    public bool canJump = true;
     private float velocityY;
-    private int amountOfJumpsLeft;
 
     [Header("For WallSliding")]
     public float wallSlideSpeed = 0f;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float wallJJumpDirection = -1f;
     public Vector2 wallJumpAngle;
 
-     [Header(" For Sound System")]
+    [Header(" For Sound System")]
     public AudioSource src;
     public int jumpSound;
     public int dashSound;
@@ -51,12 +51,13 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float xAxis;
     private float yAxis;
-   
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentCharacter.Value = CharacterType.Hihat;
+        character = GetCharacter(currentCharacter.Value);
         animator = character.GetComponent<Animator>();
-
     }
 
     private void Update()
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour
         //if (health.IsDead()) return;
         //if (InteractWithCombat);
         Inputs();
-        CheckWorld(); 
+        CheckWorld();
     }
     private void FixedUpdate()
     {
@@ -76,14 +77,25 @@ public class PlayerController : MonoBehaviour
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
 
+        // TODO: TBD refactor to a better design
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            character.SetActive(false);
+            currentCharacter.Value = currentCharacter.Value == CharacterType.Hihat ?
+                CharacterType.Drums :
+                CharacterType.Hihat;
+            character = GetCharacter(currentCharacter.Value);
+            character.SetActive(true);
+            animator = character.GetComponent<Animator>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             throwJump = true;
-            DecreaseAmountOfJumpsLeft();
             src.PlayOneShot(Camera.main.GetComponent<mixer>().GetSound(jumpSound));
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && isWalking && currentCharacter.Value == CharacterType.Hihat)
         {
             throwDash = true;
             src.PlayOneShot(Camera.main.GetComponent<mixer>().GetSound(dashSound));
@@ -104,17 +116,21 @@ public class PlayerController : MonoBehaviour
             Walk();
         }
 
-        WallSlide();
+        if (currentCharacter.Value == CharacterType.Hihat)
+        {
+            WallSlide();
+        }
 
 
-        if (isWallSliding && throwJump)
+        if (throwJump && isWallSliding)
         {
             animator.SetTrigger("wallJumping");
             WallJump();
         }
 
-        if (throwJump && isGrounded)
+        if (throwJump && isGrounded && canJump)
         {
+            canJump = false;
             isJumping = true;
             throwJump = false;
             ImproveJump();
@@ -134,6 +150,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private void ImproveJump()
     {
         if (rb.velocity.y < 0)
@@ -148,14 +166,13 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Regular Jump");
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += Vector2.up * jumpForce;
     }
 
     private void Walk()
     {
-        var direction = new Vector2(xAxis, yAxis);
+        var direction = new Vector2(xAxis, 0);
 
         rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
@@ -168,6 +185,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isWalking = true;
+                isJumping = false;
             }
 
             if (direction.x < 0 && transform.localScale.x > 0)
@@ -224,32 +242,13 @@ public class PlayerController : MonoBehaviour
     {
         var force = new Vector2(wallJumpForce * wallJJumpDirection * wallJumpAngle.x,
             wallJumpForce * wallJumpAngle.y);
-        Debug.Log("WallJump");
         rb.AddForce(force, ForceMode2D.Impulse);
         throwJump = false;
     }
-    public bool CanJump()
-    {
-        if (amountOfJumpsLeft > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = characterData.amountOfJumps;
-
-    public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
     private void CheckWorld()
     {
         isGrounded = CheckIfGrounded();
-        if (isGrounded)
-        {
-            ResetAmountOfJumpsLeft();
-        }
         isTouchingWall = CheckIfTouchingWall();
     }
     public bool CheckIfGrounded()
@@ -265,8 +264,17 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("verticalVelocity", velocityY);
         animator.SetBool("jumping", isJumping);
         animator.SetBool("walking", isWalking);
-        animator.SetBool("dashing", isDashing);
-        animator.SetBool("sliding", isWallSliding);
+
+        if (currentCharacter.Value == CharacterType.Hihat)
+        {
+            animator.SetBool("dashing", isDashing);
+            animator.SetBool("sliding", isWallSliding);
+        }
+    }
+
+    private GameObject GetCharacter(CharacterType type)
+    {
+        return transform.Find(type.ToString()).gameObject;
     }
 
     private void OnDrawGizmos()
