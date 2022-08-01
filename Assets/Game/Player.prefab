@@ -69,12 +69,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b66d6eab06b0243a14cb1d39205537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 6066352580467004462}
   characterData: {fileID: 11400000, guid: a9037d07f15ae32458ab8dcb35bf57d6, type: 2}
   currentCharacter: {fileID: 11400000, guid: 6793aec3a6fa1ed48b5529c18466d45b, type: 2}
   speed: 5
   dashForce: 10
   dashTime: 0.3
+  isDashing: 0
   jumpForce: 5
   groundLayer:
     serializedVersion: 2
@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 6066352580591836871}
   - component: {fileID: 6066352580591836869}
   - component: {fileID: 6066352579465626678}
+  - component: {fileID: 1248975521}
   m_Layer: 0
   m_Name: Drums
   m_TagString: Untagged
@@ -461,6 +462,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1f1dde6762f054384282173a6da20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1248975521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066352580591835449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601a30a03f615274a9ec492267d5fa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: {fileID: 11400000, guid: 780c336ad58ffe7459cbcb32bd3dec95, type: 2}
+  resetHp: 0
+  startingHp:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 16faf9de55dafd643adca91088ffb5e4, type: 2}
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 4fc7870c578534341b631db1735f55b5, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ca6b2e0446c7f564d9be1880c69713a6, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6066352580671938251
 GameObject:
   m_ObjectHideFlags: 0
