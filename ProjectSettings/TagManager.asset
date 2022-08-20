@@ -8,19 +8,19 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
-  - Wall
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Weapon
+  - Platform
+  - AgentCollider
+  - CameraConfiner
+  - Hittable
+  - SpawnPoint
+  - Enemies
+  - Pickable
+  - Obstacle
   - 
   - 
   - 
@@ -46,4 +46,22 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1259001375
+    locked: 0
+  - name: Obstacle
+    uniqueID: 972386617
+    locked: 0
+  - name: Agents
+    uniqueID: 4237106959
+    locked: 0
+  - name: Weapons
+    uniqueID: 4089589829
+    locked: 0
+  - name: Front
+    uniqueID: 2768869991
+    locked: 0
+  - name: Pickable
+    uniqueID: 3956436771
+    locked: 0
+  - name: UI
+    uniqueID: 1462087899
     locked: 0
