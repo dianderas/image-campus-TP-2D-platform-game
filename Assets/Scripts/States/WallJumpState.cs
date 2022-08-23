@@ -7,7 +7,7 @@ public class WallJumpState : MovementState
     protected override void EnterState()
     {
         agent.animationManager.PlayAnimation(AnimationType.wallJump);
-        var force = new Vector2(agent.agentData.wallJumpForce * agent.transform.localScale.x * agent.agentData.wallJumpAngle.x,
+        var force = new Vector2(agent.agentData.wallJumpForce * -agent.transform.localScale.x * agent.agentData.wallJumpAngle.x,
             agent.agentData.wallJumpForce * agent.agentData.wallJumpAngle.y);
         agent.rb2d.AddForce(force, ForceMode2D.Impulse);
     }

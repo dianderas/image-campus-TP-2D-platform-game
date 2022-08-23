@@ -22,7 +22,8 @@ MonoBehaviour:
   climbHorizontalSpeed: 2
   climbVerticalSpeed: 5
   wallSlideSpeed: 1
-  wallJumpForce: 10
-  wallJumpAngle: {x: 1, y: 1.2}
+  wallJumpForce: 6
+  wallJumpAngle: {x: 0.1, y: 1.4}
   dashForce: 8
   dashTime: 0.3
+  characterType: 0

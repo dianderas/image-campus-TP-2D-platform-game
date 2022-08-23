@@ -6,30 +6,22 @@ using UnityEngine.Events;
 
 public class SwapAgentManager : MonoBehaviour
 {
-    private AgentStorage agentStorage;
     [SerializeField]
     private GameObject hihat;
     [SerializeField]
     private GameObject drums;
+    private bool isHihat = true;
 
     public UnityEvent OnAgentSwap;
 
-    private void Awake()
-    {
-        agentStorage = new AgentStorage();
-        agentStorage.AddAgent(drums);
-        agentStorage.AddAgent(hihat);
-    }
-
     private void Start()
     {
-        agentStorage.Initialize();
+        drums.SetActive(false);
     }
 
     public void SwapAgent()
     {
-        Debug.Log("SwapAgent in Manager");
-        agentStorage.SwapAgent();
-        OnAgentSwap?.Invoke();
+        hihat.SetActive(!hihat.activeSelf);
+        drums.SetActive(!drums.activeSelf);
     }
 }

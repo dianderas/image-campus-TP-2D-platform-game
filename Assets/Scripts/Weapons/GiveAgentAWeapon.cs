@@ -10,7 +10,7 @@ namespace WeaponSystem
 
         private void Start()
         {
-            Agent agent = GetComponent<Agent>();
+            Agent agent = GetComponentInChildren<Agent>();
             if (agent == null)
             {
                 return;

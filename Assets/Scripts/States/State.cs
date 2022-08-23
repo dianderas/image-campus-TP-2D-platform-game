@@ -22,6 +22,7 @@ public abstract class State : MonoBehaviour
         this.agent.agentInput.OnJumpReleased += HandleJumpReleased;
         this.agent.agentInput.OnMovement += HandleMovement;
         this.agent.agentInput.OnDash += HandleDash;
+        this.agent.agentInput.OnSwapAgent += HandleSwapAgent;
         OnEnter?.Invoke();
         EnterState();
     }
@@ -31,6 +32,11 @@ public abstract class State : MonoBehaviour
     protected virtual void HandleMovement(Vector2 obj) { }
 
     protected virtual void HandleDash() { }
+
+    protected virtual void HandleSwapAgent()
+    {
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.Swap));
+    }
 
     protected virtual void HandleJumpReleased() { }
 
@@ -87,6 +93,7 @@ public abstract class State : MonoBehaviour
         this.agent.agentInput.OnJumpReleased -= HandleJumpReleased;
         this.agent.agentInput.OnMovement -= HandleMovement;
         this.agent.agentInput.OnDash -= HandleDash;
+        this.agent.agentInput.OnSwapAgent -= HandleSwapAgent;
         OnExit?.Invoke();
         ExitState();
     }
