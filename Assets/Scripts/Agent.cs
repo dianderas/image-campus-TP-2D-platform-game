@@ -8,6 +8,7 @@ using WeaponSystem;
 public class Agent : MonoBehaviour
 {
     public AgentDataSO agentData;
+    public MovementDataSO movementData;
 
     public Rigidbody2D rb2d;
     public IAgentInput agentInput;
@@ -20,8 +21,6 @@ public class Agent : MonoBehaviour
 
     [HideInInspector]
     public AgentWeaponManager agentWeapon;
-    [HideInInspector]
-    public SwapAgentManager swapAgentManager;
 
     [SerializeField]
     public StateFactory stateFactory;
@@ -38,7 +37,6 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         agentInput = GetComponentInParent<IAgentInput>();
-        swapAgentManager = GetComponentInParent<SwapAgentManager>();
         rb2d = GetComponent<Rigidbody2D>();
         animationManager = GetComponentInChildren<AgentAnimation>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
@@ -54,16 +52,13 @@ public class Agent : MonoBehaviour
     private void Start()
     {
         agentInput.OnMovement += agentRenderer.FaceDirection;
-        if (CompareTag("Player"))
-        {
-            agentInput.OnSwapAgent += swapAgentManager.SwapAgent;
-        }
         InitializeAgent();
     }
 
     private void InitializeAgent()
     {
         TransitionToState(stateFactory.GetState(StateType.Idle));
+        agentData.characterType = CharacterType.Hithat;
         damagable.Initialize(agentData.health);
     }
 

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 774184136147028268}
   - component: {fileID: 9205626817793316472}
   - component: {fileID: 2175142354526456936}
+  - component: {fileID: 6053844550657095647}
   - component: {fileID: 129223267906838620}
   m_Layer: 0
   m_Name: States
@@ -253,6 +254,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   timeToWaitBeforeDieAction: 2
+--- !u!114 &6053844550657095647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129223267906838629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88f448b8abf83241920dfd17fab19c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  controllers:
+  - {fileID: 9100000, guid: 0b87c2cf821d7494496fafa3fbb6e7e0, type: 2}
+  - {fileID: 22100000, guid: f169d458e8213bc4ba199de2b7bb9eda, type: 2}
 --- !u!114 &129223267906838620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,12 +291,13 @@ MonoBehaviour:
   Move: {fileID: 129223267906838625}
   Fall: {fileID: 129223267906838631}
   Jump: {fileID: 129223267906838630}
-  Attack: {fileID: 0}
-  GetHit: {fileID: 0}
-  Die: {fileID: 0}
+  Attack: {fileID: 774184136147028268}
+  GetHit: {fileID: 9205626817793316472}
+  Die: {fileID: 2175142354526456936}
   Slide: {fileID: 129223267906838627}
   Dash: {fileID: 129223267906838621}
   WallJump: {fileID: 129223267906838626}
+  Swap: {fileID: 6053844550657095647}
 --- !u!1 &129223268636860212
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129223268636860212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.32, y: 0.53, z: 0}
+  m_LocalPosition: {x: 0.341, y: 0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 129223268648345139}
@@ -398,15 +421,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentData: {fileID: 11400000, guid: 0c0bba34ca0097742addde03e74f138e, type: 2}
+  movementData: {fileID: 11400000, guid: d1dd71e882df5164180c0a772580b3b8, type: 2}
   rb2d: {fileID: 0}
-  agentInput: {fileID: 0}
   animationManager: {fileID: 0}
   agentRenderer: {fileID: 0}
   groundDetector: {fileID: 0}
   wallDetector: {fileID: 0}
   currentState: {fileID: 0}
   previousState: {fileID: 0}
-  IdleState: {fileID: 0}
   agentWeapon: {fileID: 0}
   stateFactory: {fileID: 0}
   stateName: 
@@ -444,8 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2b0053ad49c514a91723009b96daf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 100
+  currentHealth: 100
   OnGetHit:
     m_PersistentCalls:
       m_Calls: []
@@ -524,7 +546,7 @@ MonoBehaviour:
   agentCollider: {fileID: 129223269095860155}
   groundMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 33088
   isGrounded: 0
   boxCastYOffset: -0.46
   boxCastXOffset: 0
@@ -649,6 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25377e4734be89a42b430d5d14fb3be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   OnAnimationAction:
     m_PersistentCalls:
       m_Calls: []

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4beb087a27fd5c04a892cc4864bf2034, type: 3}
   m_Name: DrumsAgentData
   m_EditorClassIdentifier: 
+  health: 2
   maxSpeed: 6
   acceleration: 50
   deacceleration: 50
@@ -20,3 +21,9 @@ MonoBehaviour:
   gravityModified: 0.5
   climbHorizontalSpeed: 2
   climbVerticalSpeed: 5
+  wallSlideSpeed: 1
+  wallJumpForce: 10
+  wallJumpAngle: {x: 0, y: 0}
+  dashForce: 20
+  dashTime: 0.2
+  characterType: 0

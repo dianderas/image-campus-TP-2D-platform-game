@@ -73,6 +73,7 @@ namespace WeaponSystem
 
         public bool CanIUseWeapon(bool isGrounded)
         {
+            Debug.Log("CanIUseWeapon::" + weaponStorage.WeaponCount);
             if (weaponStorage.WeaponCount <= 0)
             {
                 return false;

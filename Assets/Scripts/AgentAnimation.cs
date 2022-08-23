@@ -3,8 +3,7 @@ using UnityEngine.Events;
 
 public class AgentAnimation : MonoBehaviour
 {
-    private Animator animator;
-
+    public Animator animator;
     public UnityEvent OnAnimationAction;
     public UnityEvent OnAnimationEnd;
 
@@ -46,6 +45,9 @@ public class AgentAnimation : MonoBehaviour
                 break;
             case AnimationType.dash:
                 Play("Dash");
+                break;
+            case AnimationType.swap:
+                Play("Swap");
                 break;
             case AnimationType.land:
                 break;
@@ -98,5 +100,6 @@ public enum AnimationType
     slide,
     wallJump,
     dash,
-    land
+    land,
+    swap
 }
