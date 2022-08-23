@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ae37ce476df18e94ca8216bcc15ea28a
   - enabled: 1
-    path: Assets/Scenes/Movement Test Scene.unity
-    guid: c1691fcedb44c8448aa0d5db05c94438
-  - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 8cc5c577ccf5fad4da7143936f13efa4
+  - enabled: 1
+    path: Assets/Scenes/LevelIntroShingo.unity
+    guid: 65c3be0d3bbfd644fb511fd9ddc2807b
   m_configObjects: {}
