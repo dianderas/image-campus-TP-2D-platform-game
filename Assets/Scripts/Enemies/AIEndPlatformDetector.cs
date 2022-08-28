@@ -13,7 +13,7 @@ namespace GD.AI
         public float groundRaycastLength = 2;
 
         [Range(0, 1)]
-        public float gorundRaycastDelay = 0.1f;
+        public float groundRaycastDelay = 0.1f;
 
         public bool PathBlocked { get; private set; }
 
@@ -31,7 +31,7 @@ namespace GD.AI
 
         IEnumerator CheckGorundCoroutine()
         {
-            yield return new WaitForSeconds(gorundRaycastDelay);
+            yield return new WaitForSeconds(groundRaycastDelay);
             var hit = Physics2D.Raycast(detectorCollider.bounds.center, Vector2.down, groundRaycastLength, groundMask);
             if (hit.collider == null)
             {
@@ -41,8 +41,13 @@ namespace GD.AI
             StartCoroutine(CheckGorundCoroutine());
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
+            /*
+            if (collision.gameObject.layer == LayerMask.NameToLayer("ClimbingStuff"))
+                return;
+            */
+
             OnPathBlocked?.Invoke();
         }
 

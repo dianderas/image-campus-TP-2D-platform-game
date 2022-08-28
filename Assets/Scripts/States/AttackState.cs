@@ -90,11 +90,11 @@ public class AttackState : State
 
     public override void StateUpdate()
     {
-        base.StateUpdate();
+        // prevent update
     }
 
     public override void StateFixedUpdate()
     {
-        base.StateFixedUpdate();
+        // prevent fixed update
     }
 }

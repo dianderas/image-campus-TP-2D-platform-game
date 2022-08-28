@@ -53,6 +53,9 @@ TagManager:
   - name: Agents
     uniqueID: 4237106959
     locked: 0
+  - name: Player
+    uniqueID: 543115365
+    locked: 0
   - name: Weapons
     uniqueID: 4089589829
     locked: 0
