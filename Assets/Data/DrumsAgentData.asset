@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DrumsAgentData
   m_EditorClassIdentifier: 
   health: 2
-  maxSpeed: 6
+  maxSpeed: 4
   acceleration: 50
   deacceleration: 50
-  jumpForce: 12
+  jumpForce: 8
   lowJumpMultiplier: 2
   gravityModified: 0.5
   climbHorizontalSpeed: 2
@@ -26,4 +26,3 @@ MonoBehaviour:
   wallJumpAngle: {x: 0, y: 0}
   dashForce: 20
   dashTime: 0.2
-  characterType: 0

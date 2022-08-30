@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 6179132594489535530}
   - component: {fileID: 7645845154932198784}
   - component: {fileID: 4623196225318678469}
+  - component: {fileID: 3348300321423501031}
   m_Layer: 13
   m_Name: LizardEnemy
   m_TagString: Untagged
@@ -270,6 +271,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData:
   - {fileID: 11400000, guid: 80e96ffdd151ff145b69305fa9870c6a, type: 2}
+--- !u!114 &3348300321423501031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179132594489535531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d643a6f13ad9fd4ba2eeff378d54347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6707528229704557392
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -374,18 +387,46 @@ PrefabInstance:
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6179132594489535531}
+      objectReference: {fileID: 3348300321423501031}
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroySelf
       objectReference: {fileID: 0}
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3348300321423501031}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroySelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GD.Common.DestroyUtil, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GD.Common.DestroyUtil, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnAgentDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345132, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 129223268648345136, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: m_Name

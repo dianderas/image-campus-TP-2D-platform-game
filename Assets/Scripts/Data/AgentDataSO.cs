@@ -38,13 +38,4 @@ public class AgentDataSO : ScriptableObject
     [Space]
     public float dashForce = 20;
     public float dashTime = 0.2f;
-
-    [Header("Character Selected")]
-    [Space]
-    public CharacterType characterType = CharacterType.Hithat;
-}
-
-public enum CharacterType { 
-    Hithat,
-    Drums
 }

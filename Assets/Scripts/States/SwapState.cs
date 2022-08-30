@@ -5,17 +5,22 @@ using UnityEngine;
 public class SwapState : State
 {
     public RuntimeAnimatorController[] controllers;
+    public CharacterSelectedSO characterSelected;
+    public AgentDataSO[] agentDatas;
 
     protected override void EnterState()
     {
-        if (agent.agentData.characterType == CharacterType.Hithat)
+        // TODO: maybe need better approach
+        if (characterSelected.characterType == CharacterType.Hithat)
         {
-            agent.agentData.characterType = CharacterType.Drums;
+            agent.agentData = agentDatas[1];
+            characterSelected.characterType = CharacterType.Drums;
             agent.animationManager.animator.runtimeAnimatorController = controllers[1];
         }
         else
         {
-            agent.agentData.characterType = CharacterType.Hithat;
+            agent.agentData = agentDatas[0];
+            characterSelected.characterType = CharacterType.Hithat;
             agent.animationManager.animator.runtimeAnimatorController = controllers[0];
         }
     }

@@ -9,6 +9,7 @@ public class Agent : MonoBehaviour
 {
     public AgentDataSO agentData;
     public MovementDataSO movementData;
+    public CharacterSelectedSO characterSelected;
 
     public Rigidbody2D rb2d;
     public IAgentInput agentInput;
@@ -58,8 +59,12 @@ public class Agent : MonoBehaviour
     private void InitializeAgent()
     {
         TransitionToState(stateFactory.GetState(StateType.Idle));
-        agentData.characterType = CharacterType.Hithat;
         damagable.Initialize(agentData.health);
+        // TODO: this compareTag need abstract interface.
+        if (CompareTag("Player"))
+        {
+            characterSelected.characterType = CharacterType.Hithat;
+        }
     }
 
     public void AgentDied()
@@ -111,8 +116,11 @@ public class Agent : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (CompareTag("Player") && characterSelected.characterType == CharacterType.Hithat)
+        {
+            wallDetector?.CheckIsTouchingWall();
+        }
         groundDetector.CheckIsGrounded();
-        wallDetector?.CheckIsTouchingWall();
         currentState.StateFixedUpdate();
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour, IAgentInput
 {
+    public CharacterSelectedSO characterSelected;
+
     [field: SerializeField]
     public Vector2 MovementVector { get; private set; }
 
@@ -41,7 +43,10 @@ public class PlayerInput : MonoBehaviour, IAgentInput
     {
         if (Input.GetKeyDown(dashkey))
         {
-            OnDash?.Invoke();
+            if (characterSelected.characterType == CharacterType.Hithat)
+            {
+                OnDash?.Invoke();
+            }
         }
     }
 
