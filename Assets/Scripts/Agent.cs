@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RespawnSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using WeaponSystem;
@@ -60,6 +61,7 @@ public class Agent : MonoBehaviour
     {
         TransitionToState(stateFactory.GetState(StateType.Idle));
         damagable.Initialize(agentData.health);
+
         // TODO: this compareTag need abstract interface.
         if (CompareTag("Player"))
         {
@@ -76,6 +78,10 @@ public class Agent : MonoBehaviour
         else
         {
             currentState.Die();
+
+            // Note: this is provisional
+            GetComponent<RespawnHelper>().RespawnPlayer();
+            TransitionToState(stateFactory.GetState(StateType.Idle));
         }
     }
 
