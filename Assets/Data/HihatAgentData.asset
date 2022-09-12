@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: HihatAgentData
   m_EditorClassIdentifier: 
   health: 5
-  maxSpeed: 4
+  maxSpeed: 7.5
   acceleration: 50
   deacceleration: 50
-  jumpForce: 8
+  jumpForce: 8.5
   lowJumpMultiplier: 2
   gravityModified: 0.5
   climbHorizontalSpeed: 2
   climbVerticalSpeed: 5
   wallSlideSpeed: 1
-  wallJumpForce: 6
-  wallJumpAngle: {x: 0.1, y: 1.4}
-  dashForce: 8
-  dashTime: 0.3
-  characterType: 0
+  wallJumpForce: 7
+  wallJumpAngle: {x: 0.1, y: 1.45}
+  dashForce: 10
+  dashTime: 0.4
