@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ae37ce476df18e94ca8216bcc15ea28a
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 8cc5c577ccf5fad4da7143936f13efa4
   - enabled: 1
-    path: Assets/Scenes/LevelIntroShingo.unity
-    guid: 65c3be0d3bbfd644fb511fd9ddc2807b
+    path: Assets/Scenes/ShingoLevelintro.unity
+    guid: 378005634344348429d7e7fa5595804d
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

@@ -494,6 +494,21 @@ TextureImporter:
   - first:
       213: -1826886484922287246
     second: Edificios y calle level 1_163
+  - first:
+      213: -6278404754116542409
+    second: Edificios y calle level 1_164
+  - first:
+      213: -8269578649690972332
+    second: Edificios y calle level 1_165
+  - first:
+      213: 1577916916780582126
+    second: Edificios y calle level 1_166
+  - first:
+      213: 4522843774487729509
+    second: Edificios y calle level 1_167
+  - first:
+      213: 7643515810703212403
+    second: Edificios y calle level 1_168
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -3895,8 +3910,8 @@ TextureImporter:
       name: Edificios y calle level 1_157
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 224
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -3916,8 +3931,8 @@ TextureImporter:
       name: Edificios y calle level 1_158
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 256
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -3937,7 +3952,7 @@ TextureImporter:
       name: Edificios y calle level 1_159
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 160
         width: 32
         height: 32
@@ -3958,7 +3973,7 @@ TextureImporter:
       name: Edificios y calle level 1_160
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 160
         width: 32
         height: 32
@@ -3979,7 +3994,7 @@ TextureImporter:
       name: Edificios y calle level 1_161
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 160
         width: 32
         height: 32
@@ -4000,7 +4015,7 @@ TextureImporter:
       name: Edificios y calle level 1_162
       rect:
         serializedVersion: 2
-        x: 160
+        x: 96
         y: 160
         width: 32
         height: 32
@@ -4021,7 +4036,7 @@ TextureImporter:
       name: Edificios y calle level 1_163
       rect:
         serializedVersion: 2
-        x: 192
+        x: 128
         y: 160
         width: 32
         height: 32
@@ -4034,6 +4049,111 @@ TextureImporter:
       bones: []
       spriteID: 27bbe35db6895a6e0800000000000000
       internalID: -1826886484922287246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edificios y calle level 1_164
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73082caf320aed8a0800000000000000
+      internalID: -6278404754116542409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edificios y calle level 1_165
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fd30f380e8c3d80800000000000000
+      internalID: -8269578649690972332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edificios y calle level 1_166
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee449cd5313e5e510800000000000000
+      internalID: 1577916916780582126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edificios y calle level 1_167
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5659de8237e54ce30800000000000000
+      internalID: 4522843774487729509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edificios y calle level 1_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ffb0cf129331a60800000000000000
+      internalID: 7643515810703212403
       vertices: []
       indices: 
       edges: []
