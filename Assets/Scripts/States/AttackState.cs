@@ -16,6 +16,7 @@ public class AttackState : State
 
     protected override void EnterState()
     {
+        agent.stopFaceDirectionListener();
         agent.animationManager.ResetEvents();
         agent.animationManager.PlayAnimation(AnimationType.attack);
         agent.animationManager.OnAnimationEnd.AddListener(TransitionToIdleState);
@@ -24,10 +25,13 @@ public class AttackState : State
         agent.agentWeapon.ToggleWeaponVisibility(true);
         direction = agent.transform.right * (agent.transform.localScale.x > 0 ? 1 : -1);
 
+        /* Note: stop movement during attack feature */
+        /*
         if (agent.groundDetector.isGrounded)
         {
             agent.rb2d.velocity = Vector2.zero;
         }
+        */
     }
 
     private void PerformAttack()
@@ -39,6 +43,7 @@ public class AttackState : State
 
     private void TransitionToIdleState()
     {
+        agent.startFaceDirectionListener();
         agent.animationManager.OnAnimationEnd.RemoveListener(TransitionToIdleState);
         if (agent.groundDetector.isGrounded)
         {
