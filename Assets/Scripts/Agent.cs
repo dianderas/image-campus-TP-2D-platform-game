@@ -53,7 +53,7 @@ public class Agent : MonoBehaviour
 
     private void Start()
     {
-        agentInput.OnMovement += agentRenderer.FaceDirection;
+        startFaceDirectionListener();
         InitializeAgent();
     }
 
@@ -79,7 +79,7 @@ public class Agent : MonoBehaviour
         {
             currentState.Die();
 
-            // Note: this is provisional
+            // Note: this is provisional because after die is TBD
             GetComponent<RespawnHelper>().RespawnPlayer();
             TransitionToState(stateFactory.GetState(StateType.Idle));
         }
@@ -128,5 +128,15 @@ public class Agent : MonoBehaviour
         }
         groundDetector.CheckIsGrounded();
         currentState.StateFixedUpdate();
+    }
+
+    public void stopFaceDirectionListener()
+    {
+        agentInput.OnMovement -= agentRenderer.FaceDirection;
+    }
+
+    public void startFaceDirectionListener()
+    {
+        agentInput.OnMovement += agentRenderer.FaceDirection;
     }
 }
