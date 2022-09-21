@@ -18,11 +18,11 @@ MonoBehaviour:
   deacceleration: 50
   jumpForce: 8.5
   lowJumpMultiplier: 2
-  gravityModified: 0.5
+  gravityModified: 0.2
   climbHorizontalSpeed: 2
   climbVerticalSpeed: 5
-  wallSlideSpeed: 1
+  wallSlideSpeed: 2
   wallJumpForce: 7
-  wallJumpAngle: {x: 0.1, y: 1.45}
+  wallJumpAngle: {x: 0.25, y: 1.5}
   dashForce: 10
   dashTime: 0.4
