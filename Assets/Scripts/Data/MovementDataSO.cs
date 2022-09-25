@@ -8,4 +8,5 @@ public class MovementDataSO : ScriptableObject
     public float horizontalMovementDirection;
     public float currentSpeed;
     public Vector2 currentVelocity;
+    public bool canAirJump = false;
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5cca10dd96ca23409b6b246c6c960e1, type: 3}
-  m_Name: PlasmaShotRangeWeaponData
+  m_Name: EnemyRangeWeaponData
   m_EditorClassIdentifier: 
-  weaponName: PlasmaShoot
-  weaponSprite: {fileID: -6140515260198765629, guid: 2cc604ee03fbb164fad092954f6baa14, type: 3}
+  weaponName: EnemyRangeWeapon
+  weaponSprite: {fileID: 0}
   weaponDamage: 1
   weaponSwingSound: {fileID: 0}
-  rangeWeaponPrefab: {fileID: 1597328840891543816, guid: 08c8e687318017d458aeb801a7fc7ca9, type: 3}
+  rangeWeaponPrefab: {fileID: 1153335369350932049, guid: 7221d79dc2bd8324ab066c1aa7f3a83d, type: 3}
   weaponThrowSpeed: 10
   attackRange: 8

@@ -6,9 +6,6 @@ using UnityEngine.Events;
 
 public class MovementState : State
 {
-    [SerializeField]
-    public MovementDataSO movementData;
-
     public UnityEvent OnStep;
 
     protected override void EnterState()
@@ -16,9 +13,9 @@ public class MovementState : State
         agent.animationManager.PlayAnimation(AnimationType.run);
         agent.animationManager.OnAnimationAction.AddListener(() => OnStep.Invoke());
 
-        movementData.horizontalMovementDirection = 0;
-        movementData.currentSpeed = 0;
-        movementData.currentVelocity = Vector2.zero;
+        agent.characterSharedData.horizontalMovementDirection = 0;
+        agent.characterSharedData.currentSpeed = 0;
+        agent.characterSharedData.currentVelocity = Vector2.zero;
     }
 
     protected override void HandleDash()
@@ -43,42 +40,42 @@ public class MovementState : State
 
     protected void SetPlayerVelocity()
     {
-        agent.rb2d.velocity = movementData.currentVelocity;
+        agent.rb2d.velocity = agent.characterSharedData.currentVelocity;
     }
 
     protected void CalculateVelocity()
     {
-        CalculateSpeed(agent.agentInput.MovementVector, movementData);
-        CalculateHorizontalDirection(movementData);
-        movementData.currentVelocity = Vector3.right * movementData.horizontalMovementDirection *
-            movementData.currentSpeed;
-        movementData.currentVelocity.y = agent.rb2d.velocity.y;
+        CalculateSpeed(agent.agentInput.MovementVector, agent.characterSharedData);
+        CalculateHorizontalDirection(agent.characterSharedData);
+        agent.characterSharedData.currentVelocity = Vector3.right * agent.characterSharedData.horizontalMovementDirection *
+            agent.characterSharedData.currentSpeed;
+        agent.characterSharedData.currentVelocity.y = agent.rb2d.velocity.y;
     }
 
-    protected void CalculateHorizontalDirection(MovementDataSO movementData)
+    protected void CalculateHorizontalDirection(MovementDataSO characterSharedData)
     {
         if (agent.agentInput.MovementVector.x > 0)
         {
-            movementData.horizontalMovementDirection = 1;
+            characterSharedData.horizontalMovementDirection = 1;
         }
         else if (agent.agentInput.MovementVector.x < 0)
         {
-            movementData.horizontalMovementDirection = -1;
+            characterSharedData.horizontalMovementDirection = -1;
         }
     }
 
-    protected void CalculateSpeed(Vector2 movementVector, MovementDataSO movementData)
+    protected void CalculateSpeed(Vector2 movementVector, MovementDataSO characterSharedData)
     {
         if (Mathf.Abs(movementVector.x) > 0)
         {
-            movementData.currentSpeed += agent.agentData.acceleration * Time.deltaTime;
+            characterSharedData.currentSpeed += agent.agentData.acceleration * Time.deltaTime;
         }
         else
         {
-            movementData.currentSpeed -= agent.agentData.deacceleration * Time.deltaTime;
+            characterSharedData.currentSpeed -= agent.agentData.deacceleration * Time.deltaTime;
         }
 
-        movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0, agent.agentData.maxSpeed);
+        characterSharedData.currentSpeed = Mathf.Clamp(characterSharedData.currentSpeed, 0, agent.agentData.maxSpeed);
     }
 
     protected override void ExitState()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwapState : State
+public class SwapState : MovementState
 {
     public RuntimeAnimatorController[] controllers;
     public CharacterSelectedSO characterSelected;
@@ -10,12 +10,18 @@ public class SwapState : State
 
     protected override void EnterState()
     {
+        if (!agent.groundDetector.isGrounded)
+        {
+            agent.characterSharedData.canAirJump = true;
+        }
+
         // TODO: maybe need better approach
         if (characterSelected.characterType == CharacterType.Hithat)
         {
             agent.agentData = agentDatas[1];
             characterSelected.characterType = CharacterType.Drums;
             agent.animationManager.animator.runtimeAnimatorController = controllers[1];
+            agent.wallDetector.enabled = false;
         }
         else
         {
@@ -23,13 +29,7 @@ public class SwapState : State
             characterSelected.characterType = CharacterType.Hithat;
             agent.animationManager.animator.runtimeAnimatorController = controllers[0];
         }
-    }
 
-    protected override void HandleMovement(Vector2 input)
-    {
-        if (Mathf.Abs(input.x) > 0)
-        {
-            agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
-        }
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
     }
 }
