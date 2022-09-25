@@ -10,15 +10,21 @@ public class JumpState : MovementState
     protected override void EnterState()
     {
         agent.animationManager.PlayAnimation(AnimationType.jump);
-        movementData.currentVelocity = agent.rb2d.velocity;
-        movementData.currentVelocity.y = agent.agentData.jumpForce;
-        agent.rb2d.velocity = movementData.currentVelocity;
+        agent.characterSharedData.currentVelocity = agent.rb2d.velocity;
+        agent.characterSharedData.currentVelocity.y = agent.agentData.jumpForce;
+        agent.rb2d.velocity = agent.characterSharedData.currentVelocity;
         jumpPressed = true;
     }
 
     protected override void HandleJumpPressed()
     {
         jumpPressed = true;
+
+        if (agent.characterSharedData.canAirJump)
+        {
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Jump));
+            agent.characterSharedData.canAirJump = false;
+        }
     }
 
     protected override void HandleJumpReleased()
@@ -47,9 +53,9 @@ public class JumpState : MovementState
     {
         if (!jumpPressed)
         {
-            movementData.currentVelocity = agent.rb2d.velocity;
-            movementData.currentVelocity.y += agent.agentData.lowJumpMultiplier * Physics2D.gravity.y * Time.deltaTime;
-            agent.rb2d.velocity = movementData.currentVelocity;
+            agent.characterSharedData.currentVelocity = agent.rb2d.velocity;
+            agent.characterSharedData.currentVelocity.y += agent.agentData.lowJumpMultiplier * Physics2D.gravity.y * Time.deltaTime;
+            agent.rb2d.velocity = agent.characterSharedData.currentVelocity;
         }
     }
 }

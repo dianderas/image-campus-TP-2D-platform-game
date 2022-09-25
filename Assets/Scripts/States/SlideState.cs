@@ -16,9 +16,9 @@ public class SlideState : MovementState
 
     public override void StateUpdate()
     {
-        movementData.currentVelocity = agent.rb2d.velocity;
-        movementData.currentVelocity.y = -agent.agentData.wallSlideSpeed;
-        agent.rb2d.velocity = movementData.currentVelocity;
+        agent.characterSharedData.currentVelocity = agent.rb2d.velocity;
+        agent.characterSharedData.currentVelocity.y = -agent.agentData.wallSlideSpeed;
+        agent.rb2d.velocity = agent.characterSharedData.currentVelocity;
 
         if (Mathf.Abs(agent.agentInput.MovementVector.x) == 0 || !agent.wallDetector.isTouchingWall)
         {

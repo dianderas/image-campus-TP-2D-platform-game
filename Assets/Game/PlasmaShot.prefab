@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1597328840891543817}
   - component: {fileID: 1597328840891543823}
   - component: {fileID: 1597328840891543822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlasmaShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,3 @@ MonoBehaviour:
   center: {x: 0, y: 0}
   radius: 0.174
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.2784314}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0

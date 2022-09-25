@@ -61,9 +61,12 @@ public class PlayerInput : MonoBehaviour, IAgentInput
 
     private void GetAttackInput()
     {
-        if (Input.GetKeyDown(attackKey))
+        if (characterSelected.characterType == CharacterType.Drums)
         {
-            OnAttack?.Invoke();
+            if (Input.GetKeyDown(attackKey))
+            {
+                OnAttack?.Invoke();
+            }
         }
     }
 

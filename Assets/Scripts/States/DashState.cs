@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DashState : MovementState
 {
+    private float originalGravity;
+
     protected override void EnterState()
     {
         agent.animationManager.PlayAnimation(AnimationType.dash);
@@ -28,11 +30,18 @@ public class DashState : MovementState
         // prevent
     }
 
+    protected override void ExitState()
+    {
+        agent.rb2d.gravityScale = originalGravity;
+    }
+
     private IEnumerator Dash()
     {
-        float originalGravity = agent.rb2d.gravityScale;
+        originalGravity = agent.rb2d.gravityScale;
+        agent.rb2d.gravityScale = 0;
         agent.rb2d.velocity = new Vector2(agent.transform.localScale.x * agent.agentData.dashForce, 0f);
         yield return new WaitForSeconds(agent.agentData.dashTime);
+        agent.rb2d.gravityScale = originalGravity;
         TransitionAnotherState();
     }
 }
