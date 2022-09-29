@@ -13,6 +13,7 @@ public class DashState : MovementState
         StartCoroutine(Dash());
     }
 
+    // Note: unuse
     private void TransitionAnotherState()
     {
         if (agent.groundDetector.isGrounded)
@@ -30,6 +31,11 @@ public class DashState : MovementState
         // prevent
     }
 
+    protected override void HandleDash()
+    {
+        // prevent
+    }
+
     protected override void ExitState()
     {
         agent.rb2d.gravityScale = originalGravity;
@@ -42,6 +48,7 @@ public class DashState : MovementState
         agent.rb2d.velocity = new Vector2(agent.transform.localScale.x * agent.agentData.dashForce, 0f);
         yield return new WaitForSeconds(agent.agentData.dashTime);
         agent.rb2d.gravityScale = originalGravity;
-        TransitionAnotherState();
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.Fall));
+        //TransitionAnotherState();
     }
 }
