@@ -9,7 +9,7 @@ using WeaponSystem;
 public class Agent : MonoBehaviour
 {
     public AgentDataSO agentData;
-    public MovementDataSO movementData;
+    public MovementDataSO characterSharedData;
     public CharacterSelectedSO characterSelected;
 
     public Rigidbody2D rb2d;
@@ -61,11 +61,12 @@ public class Agent : MonoBehaviour
     {
         TransitionToState(stateFactory.GetState(StateType.Idle));
         damagable.Initialize(agentData.health);
-
+        
         // TODO: this compareTag need abstract interface.
         if (CompareTag("Player"))
         {
             characterSelected.characterType = CharacterType.Hithat;
+            characterSharedData.canAirJump = false;
         }
     }
 
@@ -128,6 +129,11 @@ public class Agent : MonoBehaviour
         }
         groundDetector.CheckIsGrounded();
         currentState.StateFixedUpdate();
+
+        if (groundDetector.isGrounded)
+        {
+            characterSharedData.canAirJump = false;
+        }
     }
 
     public void stopFaceDirectionListener()

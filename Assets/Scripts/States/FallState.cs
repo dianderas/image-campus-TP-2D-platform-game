@@ -11,7 +11,11 @@ public class FallState : MovementState
 
     protected override void HandleJumpPressed()
     {
-        // Dont allow jumping in fall state
+        if (agent.characterSharedData.canAirJump)
+        {
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Jump));
+            agent.characterSharedData.canAirJump = false;
+        }
     }
 
     protected override void HandleDash()
@@ -21,9 +25,9 @@ public class FallState : MovementState
 
     public override void StateUpdate()
     {
-        movementData.currentVelocity = agent.rb2d.velocity;
-        movementData.currentVelocity.y += agent.agentData.gravityModified * Physics2D.gravity.y * Time.deltaTime;
-        agent.rb2d.velocity = movementData.currentVelocity;
+        agent.characterSharedData.currentVelocity = agent.rb2d.velocity;
+        agent.characterSharedData.currentVelocity.y += agent.agentData.gravityModified * Physics2D.gravity.y * Time.deltaTime;
+        agent.rb2d.velocity = agent.characterSharedData.currentVelocity;
 
         CalculateVelocity();
         SetPlayerVelocity();
