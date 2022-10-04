@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AgentData", menuName = "Agent/Data")]
 public class AgentDataSO : ScriptableObject
 {
-    [Header("Movement data")]
+    [Header("Health data")]
     [Space]
     public int health = 2;
+    public int currentHealth = 2;
     [Header("Movement data")]
     [Space]
     public float maxSpeed = 6;
@@ -19,11 +20,6 @@ public class AgentDataSO : ScriptableObject
     public float jumpForce = 12;
     public float lowJumpMultiplier = 2;
     public float gravityModified = 0.5f;
-
-    [Header("Climb data")]
-    [Space]
-    public float climbHorizontalSpeed = 2;
-    public float climbVerticalSpeed = 5;
 
     [Header("Slide data")]
     [Space]
@@ -38,4 +34,9 @@ public class AgentDataSO : ScriptableObject
     [Space]
     public float dashForce = 20;
     public float dashTime = 0.2f;
+
+    public void InitializeMaxHealth(int maxHealth)
+    {
+        currentHealth = maxHealth;
+    }
 }

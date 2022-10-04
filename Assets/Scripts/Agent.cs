@@ -26,7 +26,7 @@ public class Agent : MonoBehaviour
 
     [SerializeField]
     public StateFactory stateFactory;
-    private Damagable damagable;
+    public Damagable damagable;
 
     [Header("State debugging")]
     public string stateName = "";
@@ -61,7 +61,7 @@ public class Agent : MonoBehaviour
     {
         TransitionToState(stateFactory.GetState(StateType.Idle));
         damagable.Initialize(agentData.health);
-        
+
         // TODO: this compareTag need abstract interface.
         if (CompareTag("Player"))
         {
@@ -81,14 +81,18 @@ public class Agent : MonoBehaviour
             currentState.Die();
 
             // Note: this is provisional because after die is TBD
-            GetComponent<RespawnHelper>().RespawnPlayer();
-            TransitionToState(stateFactory.GetState(StateType.Idle));
+            if (CompareTag("Player"))
+            {
+                GetComponent<RespawnHelper>().RespawnPlayer();
+                TransitionToState(stateFactory.GetState(StateType.Idle));
+            }
         }
     }
 
     public void GetHit()
     {
         currentState.GetHit();
+        agentData.currentHealth = damagable.CurrentHealth;
     }
 
     internal void TransitionToState(State desiredState)
@@ -133,6 +137,7 @@ public class Agent : MonoBehaviour
         if (groundDetector.isGrounded)
         {
             characterSharedData.canAirJump = false;
+            characterSharedData.airJumped = false;
         }
     }
 
