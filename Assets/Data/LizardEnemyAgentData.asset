@@ -13,17 +13,15 @@ MonoBehaviour:
   m_Name: LizardEnemyAgentData
   m_EditorClassIdentifier: 
   health: 5
+  currentHealth: 5
   maxSpeed: 2
   acceleration: 50
   deacceleration: 50
   jumpForce: 8
   lowJumpMultiplier: 2
   gravityModified: 0.5
-  climbHorizontalSpeed: 2
-  climbVerticalSpeed: 5
   wallSlideSpeed: 1
   wallJumpForce: 7
   wallJumpAngle: {x: 1, y: 1.2}
   dashForce: 8
   dashTime: 0.3
-  characterType: 0

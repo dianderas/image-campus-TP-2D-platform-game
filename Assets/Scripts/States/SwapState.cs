@@ -10,9 +10,10 @@ public class SwapState : MovementState
 
     protected override void EnterState()
     {
-        if (!agent.groundDetector.isGrounded)
+        if (!agent.groundDetector.isGrounded && !agent.characterSharedData.airJumped)
         {
             agent.characterSharedData.canAirJump = true;
+            agent.characterSharedData.airJumped = true;
         }
 
         // TODO: maybe need better approach
@@ -30,6 +31,7 @@ public class SwapState : MovementState
             agent.animationManager.animator.runtimeAnimatorController = controllers[0];
         }
 
+        agent.damagable.CurrentHealth = agent.agentData.currentHealth;
         agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
     }
 }
