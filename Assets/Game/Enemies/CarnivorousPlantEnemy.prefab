@@ -213,6 +213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5812683029071758931}
     m_Modifications:
+    - target: {fileID: 129223267906838620, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: BlockAttack
+      value: 
+      objectReference: {fileID: 5864209582322340511}
     - target: {fileID: 129223267906838621, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: movementData
       value: 
@@ -505,3 +509,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 129223268648345139, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
   m_PrefabInstance: {fileID: 5812683029923934975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5864209582322340511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 129223267906838624, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+  m_PrefabInstance: {fileID: 5812683029923934975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3fa54d8d6d27747af8fa33502f2ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

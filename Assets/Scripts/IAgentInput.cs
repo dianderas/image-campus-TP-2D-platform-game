@@ -11,5 +11,7 @@ public interface IAgentInput
     event Action OnDash;
     event Action OnWeaponChange;
     event Action OnSwapAgent;
+    event Action OnBlockAttackPressed;
+    event Action OnBlockAttackReleased;
     event Action<Vector2> OnMovement;
 }

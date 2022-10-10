@@ -14,6 +14,8 @@ namespace GD.AI
         public event Action OnDash;
         public event Action OnWeaponChange;
         public event Action OnSwapAgent;
+        public event Action OnBlockAttackPressed;
+        public event Action OnBlockAttackReleased;
         public event Action<Vector2> OnMovement;
 
         public void CallOnAttack()

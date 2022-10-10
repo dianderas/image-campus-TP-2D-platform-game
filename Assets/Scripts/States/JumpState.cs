@@ -34,7 +34,7 @@ public class JumpState : MovementState
 
     protected override void HandleDash()
     {
-        agent.TransitionToState(agent.stateFactory.GetState(StateType.Dash));
+        // prevent dash
     }
 
     public override void StateUpdate()

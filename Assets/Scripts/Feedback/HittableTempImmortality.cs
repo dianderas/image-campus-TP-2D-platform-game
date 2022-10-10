@@ -18,6 +18,8 @@ namespace GD.Feedback
 
         [Header("For debug purposes")]
         public bool isInmortal = false;
+        [SerializeField]
+        private Damagable damagable;
 
         private void Awake()
         {
@@ -29,7 +31,7 @@ namespace GD.Feedback
 
         public void GetHit(GameObject gameObject, int weaponDamage)
         {
-            if (!this.enabled)
+            if (!this.enabled || !damagable.isDamagable)
             {
                 return;
             }

@@ -93,6 +93,7 @@ public class Agent : MonoBehaviour
     {
         currentState.GetHit();
         agentData.currentHealth = damagable.CurrentHealth;
+
     }
 
     internal void TransitionToState(State desiredState)

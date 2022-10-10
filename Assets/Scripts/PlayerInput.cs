@@ -10,10 +10,11 @@ public class PlayerInput : MonoBehaviour, IAgentInput
     public Vector2 MovementVector { get; private set; }
 
     public event Action OnAttack, OnjumpPressed, OnJumpReleased, OnDash, OnWeaponChange, OnSwapAgent;
+    public event Action OnBlockAttackPressed, OnBlockAttackReleased;
 
     public event Action<Vector2> OnMovement;
 
-    public KeyCode jumpKey, attackKey, menuKey, dashkey, swapAgent;
+    public KeyCode jumpKey, attackKey, menuKey, dashkey, swapAgent, blockAttack;
 
     public UnityEvent OnMenuKeyPressed;
 
@@ -25,13 +26,29 @@ public class PlayerInput : MonoBehaviour, IAgentInput
             GetJumpInput();
             GetAttackInput();
             GetDashInput();
-            GetSwapAgent();
+            GetSwapAgentInput();
+            GetBlockAttackInput();
         }
 
         GetMenuInput();
     }
 
-    private void GetSwapAgent()
+    private void GetBlockAttackInput()
+    {
+        if (characterSelected.characterType == CharacterType.Drums)
+        {
+            if (Input.GetKeyDown(blockAttack))
+            {
+                OnBlockAttackPressed?.Invoke();
+            }
+            if (Input.GetKeyUp(blockAttack))
+            {
+                OnBlockAttackReleased?.Invoke();
+            }
+        }
+    }
+
+    private void GetSwapAgentInput()
     {
         if (Input.GetKeyDown(swapAgent))
         {
