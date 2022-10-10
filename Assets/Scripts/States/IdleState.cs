@@ -15,6 +15,11 @@ public class IdleState : State
         agent.TransitionToState(agent.stateFactory.GetState(StateType.Dash));
     }
 
+    protected override void HandleBlockAttackPressed()
+    {
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.BlockAttack));
+    }
+
     public override void StateUpdate()
     {
         if (TestFallTransition())
@@ -26,13 +31,4 @@ public class IdleState : State
             agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
         }
     }
-    /*
-    protected override void HandleMovement(Vector2 input)
-    {
-        if (Mathf.Abs(input.x) > 0)
-        {
-            agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
-        }
-    }
-    */
 }

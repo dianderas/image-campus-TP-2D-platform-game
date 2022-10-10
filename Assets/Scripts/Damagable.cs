@@ -11,6 +11,7 @@ public class Damagable : MonoBehaviour, IHittable
     private int maxHealth;
     [SerializeField]
     private int currentHealth;
+    [SerializeField]
 
     public int CurrentHealth
     {
@@ -21,6 +22,7 @@ public class Damagable : MonoBehaviour, IHittable
             OnHealthValueChange?.Invoke(currentHealth);
         }
     }
+    public bool isDamagable = true;
 
     public UnityEvent OnGetHit;
     public UnityEvent OnDie;
@@ -29,6 +31,7 @@ public class Damagable : MonoBehaviour, IHittable
     public UnityEvent<int> OnHealthValueChange;
     public UnityEvent<int> OnInitializeMaxHealth;
 
+
     public void GetHit(GameObject gameObject, int weaponDamage)
     {
         GetHit(weaponDamage);
@@ -36,14 +39,17 @@ public class Damagable : MonoBehaviour, IHittable
 
     public void GetHit(int weaponDamage)
     {
-        CurrentHealth -= weaponDamage;
-        if (CurrentHealth <= 0)
+        if (isDamagable)
         {
-            OnDie?.Invoke();
-        }
-        else
-        {
-            OnGetHit?.Invoke();
+            CurrentHealth -= weaponDamage;
+            if (CurrentHealth <= 0)
+            {
+                OnDie?.Invoke();
+            }
+            else
+            {
+                OnGetHit?.Invoke();
+            }
         }
     }
 
