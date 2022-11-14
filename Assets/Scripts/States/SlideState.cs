@@ -17,6 +17,11 @@ public class SlideState : MovementState
         agent.TransitionToState(agent.stateFactory.GetState(StateType.WallJump));
     }
 
+    protected override void HandleDash()
+    {
+        // prevent dash
+    }
+
     public override void StateUpdate()
     {
         agent.stopFaceDirectionListener();

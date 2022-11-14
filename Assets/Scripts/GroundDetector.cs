@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
+    [SerializeField]
+    private bool flying = false;
+
     public Collider2D agentCollider;
     public LayerMask groundMask;
 
@@ -19,6 +22,11 @@ public class GroundDetector : MonoBehaviour
     public Color gizmoColorNotGrounded = Color.red;
     public Color gizmoColorIsGrounded = Color.green;
 
+    public void ToggleFlying(bool val)
+    {
+        flying = val;
+    }
+
     private void Awake()
     {
         if (agentCollider == null)
@@ -29,6 +37,12 @@ public class GroundDetector : MonoBehaviour
 
     public void CheckIsGrounded()
     {
+        if (flying)
+        {
+            isGrounded = true;
+            return;
+        }
+
         RaycastHit2D raycastHit = Physics2D.BoxCast(agentCollider.bounds.center + new Vector3(boxCastXOffset,
             boxCastYOffset, 0), new Vector2(boxCastWidth, boxCastHeight), 0, Vector2.down, 0, groundMask);
 

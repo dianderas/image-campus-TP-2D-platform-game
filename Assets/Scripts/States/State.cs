@@ -23,6 +23,8 @@ public abstract class State : MonoBehaviour
         this.agent.agentInput.OnMovement += HandleMovement;
         this.agent.agentInput.OnDash += HandleDash;
         this.agent.agentInput.OnSwapAgent += HandleSwapAgent;
+        this.agent.agentInput.OnBlockAttackPressed += HandleBlockAttackPressed;
+        this.agent.agentInput.OnBlockAttackReleased += HandleBlockAttackReleased;
         OnEnter?.Invoke();
         EnterState();
     }
@@ -38,7 +40,11 @@ public abstract class State : MonoBehaviour
         agent.TransitionToState(agent.stateFactory.GetState(StateType.Swap));
     }
 
+    protected virtual void HandleBlockAttackPressed() { }
+
     protected virtual void HandleJumpReleased() { }
+
+    protected virtual void HandleBlockAttackReleased() { }
 
     protected virtual void HandleJumpPressed()
     {
@@ -94,6 +100,8 @@ public abstract class State : MonoBehaviour
         this.agent.agentInput.OnMovement -= HandleMovement;
         this.agent.agentInput.OnDash -= HandleDash;
         this.agent.agentInput.OnSwapAgent -= HandleSwapAgent;
+        this.agent.agentInput.OnBlockAttackPressed -= HandleBlockAttackPressed;
+        this.agent.agentInput.OnBlockAttackReleased -= HandleBlockAttackReleased;
         OnExit?.Invoke();
         ExitState();
     }

@@ -49,6 +49,9 @@ public class AgentAnimation : MonoBehaviour
             case AnimationType.swap:
                 Play("Swap");
                 break;
+            case AnimationType.block:
+                Play("BlockAttack");
+                break;
             case AnimationType.land:
                 break;
             default:
@@ -101,5 +104,6 @@ public enum AnimationType
     wallJump,
     dash,
     land,
-    swap
+    swap,
+    block
 }

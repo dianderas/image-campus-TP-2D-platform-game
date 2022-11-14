@@ -23,6 +23,14 @@ public class MovementState : State
         agent.TransitionToState(agent.stateFactory.GetState(StateType.Dash));
     }
 
+    protected override void HandleBlockAttackPressed()
+    {
+        if (agent.groundDetector.isGrounded)
+        {
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.BlockAttack));
+        }
+    }
+
     public override void StateUpdate()
     {
         if (TestFallTransition())

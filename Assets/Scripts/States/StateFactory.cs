@@ -6,7 +6,7 @@ using UnityEngine;
 public class StateFactory : MonoBehaviour
 {
     [SerializeField]
-    private State Idle, Move, Fall, Jump, Attack, GetHit, Die, Slide, Dash, WallJump, Swap;
+    private State Idle, Move, Fall, Jump, Attack, GetHit, Die, Slide, Dash, WallJump, Swap, BlockAttack;
 
     public State GetState(StateType stateType)
         => stateType switch
@@ -22,6 +22,7 @@ public class StateFactory : MonoBehaviour
             StateType.Die => Die,
             StateType.WallJump => WallJump,
             StateType.Swap => Swap,
+            StateType.BlockAttack => BlockAttack,
             _ => throw new System.Exception("State not defined " + stateType.ToString())
         };
 
@@ -47,5 +48,6 @@ public enum StateType
     Slide,
     Dash,
     WallJump,
-    Swap
+    Swap,
+    BlockAttack
 }
