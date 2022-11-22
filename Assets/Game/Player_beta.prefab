@@ -52,7 +52,7 @@ MonoBehaviour:
   menuKey: 27
   dashkey: 304
   swapAgent: 49
-  blockAttack: 0
+  blockAttack: 51
   OnMenuKeyPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -219,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 129223269251663434, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 129223269251663434, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: m_SortingLayerID
@@ -237,6 +237,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1029848352446676084, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: damagable
+      value: 
+      objectReference: {fileID: 6428614007313301298}
     - target: {fileID: 2175142354526456936, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -337,6 +341,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 129223268648345139, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
   m_PrefabInstance: {fileID: 8009867320574842193}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6428614007313301298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3900052968570743395, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+  m_PrefabInstance: {fileID: 8009867320574842193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990463273312996193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2b0053ad49c514a91723009b96daf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7990463274308334319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129223269095860158, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}

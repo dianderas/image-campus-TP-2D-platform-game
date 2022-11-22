@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.228
       objectReference: {fileID: 0}
+    - target: {fileID: 1029848352446676084, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: damagable
+      value: 
+      objectReference: {fileID: 7204256027279254112}
     - target: {fileID: 9121374949847264084, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: m_SortingLayer
       value: 5
@@ -567,6 +571,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 129223268648345139, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
   m_PrefabInstance: {fileID: 6189473303270230019}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7204256027279254112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3900052968570743395, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+  m_PrefabInstance: {fileID: 6189473303270230019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2b0053ad49c514a91723009b96daf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6065920773279969211 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 129223269095860152, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}

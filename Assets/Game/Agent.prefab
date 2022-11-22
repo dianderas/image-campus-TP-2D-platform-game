@@ -91,7 +91,6 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -113,7 +112,6 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -135,7 +133,6 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -157,10 +154,10 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
+  delayAfterReleaseSlide: 0.2
 --- !u!114 &129223267906838626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +176,6 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -201,7 +197,6 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  movementData: {fileID: 0}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -309,6 +304,9 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  OnStep:
+    m_PersistentCalls:
+      m_Calls: []
   controllers:
   - {fileID: 9100000, guid: 0b87c2cf821d7494496fafa3fbb6e7e0, type: 2}
   - {fileID: 22100000, guid: f169d458e8213bc4ba199de2b7bb9eda, type: 2}
@@ -337,6 +335,7 @@ MonoBehaviour:
   Dash: {fileID: 129223267906838621}
   WallJump: {fileID: 129223267906838626}
   Swap: {fileID: 6053844550657095647}
+  BlockAttack: {fileID: 0}
 --- !u!1 &129223268636860212
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentData: {fileID: 11400000, guid: 0c0bba34ca0097742addde03e74f138e, type: 2}
-  movementData: {fileID: 11400000, guid: d1dd71e882df5164180c0a772580b3b8, type: 2}
+  characterSharedData: {fileID: 0}
   characterSelected: {fileID: 0}
   rb2d: {fileID: 0}
   animationManager: {fileID: 0}
@@ -473,6 +472,7 @@ MonoBehaviour:
   previousState: {fileID: 0}
   agentWeapon: {fileID: 0}
   stateFactory: {fileID: 0}
+  damagable: {fileID: 0}
   stateName: 
   <OnRespawnRequired>k__BackingField:
     m_PersistentCalls:
@@ -510,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  isDamagable: 1
   OnGetHit:
     m_PersistentCalls:
       m_Calls:
@@ -587,6 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 129223268648345133}
   force: 10
+  damagable: {fileID: 3900052968570743395}
 --- !u!114 &1029848352446676084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +607,7 @@ MonoBehaviour:
   flashDelay: 0.1
   flashAlpha: 0.5
   isInmortal: 0
+  damagable: {fileID: 0}
 --- !u!1 &129223269095860158
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969dd6e89d997cf4194c5540302b032f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flying: 0
   agentCollider: {fileID: 129223269095860155}
   groundMask:
     serializedVersion: 2
