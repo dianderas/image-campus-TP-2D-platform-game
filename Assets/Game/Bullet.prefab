@@ -135,7 +135,7 @@ MonoBehaviour:
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.28235295}
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
 --- !u!114 &6068229858792226966
 MonoBehaviour:
   m_ObjectHideFlags: 0
