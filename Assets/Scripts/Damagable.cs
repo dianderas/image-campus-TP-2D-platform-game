@@ -29,7 +29,7 @@ public class Damagable : MonoBehaviour, IHittable
     public UnityEvent OnAddHealth;
 
     public UnityEvent<int> OnHealthValueChange;
-    public UnityEvent<int> OnInitializeMaxHealth;
+    public UnityEvent OnInitializeMaxHealth;
 
 
     public void GetHit(GameObject gameObject, int weaponDamage)
@@ -62,7 +62,7 @@ public class Damagable : MonoBehaviour, IHittable
     public void Initialize(int health)
     {
         maxHealth = health;
-        OnInitializeMaxHealth?.Invoke(maxHealth);
+        OnInitializeMaxHealth?.Invoke();
         CurrentHealth = maxHealth;
     }
 }

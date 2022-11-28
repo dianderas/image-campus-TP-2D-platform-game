@@ -83,7 +83,9 @@ public class Agent : MonoBehaviour
             // Note: this is provisional because after die is TBD
             if (CompareTag("Player"))
             {
+                damagable.Initialize(agentData.health);
                 GetComponent<RespawnHelper>().RespawnPlayer();
+                GetComponent<Collider2D>().enabled = true;
                 TransitionToState(stateFactory.GetState(StateType.Idle));
             }
         }

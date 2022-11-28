@@ -76115,6 +76115,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1074959970, guid: 91ded51bed7f0774abab691886bf0a1c, type: 3}
+      propertyPath: agentData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c0bba34ca0097742addde03e74f138e, type: 2}
+    - target: {fileID: 2114261507, guid: 91ded51bed7f0774abab691886bf0a1c, type: 3}
+      propertyPath: agentData
+      value: 
+      objectReference: {fileID: 11400000, guid: edaa74491014612408d4460c4cb80dbb, type: 2}
     - target: {fileID: 4749593898179138540, guid: 91ded51bed7f0774abab691886bf0a1c, type: 3}
       propertyPath: m_Name
       value: CanvasManager

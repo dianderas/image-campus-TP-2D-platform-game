@@ -35,8 +35,8 @@ public class AgentDataSO : ScriptableObject
     public float dashForce = 20;
     public float dashTime = 0.2f;
 
-    public void InitializeMaxHealth(int maxHealth)
+    public void InitializeMaxHealth()
     {
-        currentHealth = maxHealth;
+        currentHealth = health;
     }
 }
