@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HihatAgentData
   m_EditorClassIdentifier: 
   health: 3
-  currentHealth: 3
+  currentHealth: 2
   maxSpeed: 7.5
   acceleration: 50
   deacceleration: 50
