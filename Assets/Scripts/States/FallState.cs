@@ -37,7 +37,8 @@ public class FallState : MovementState
             agent.TransitionToState(agent.stateFactory.GetState(StateType.Idle));
         }
         else if (agent.CompareTag("Player") && agent.wallDetector.isTouchingWall &&
-            Mathf.Abs(agent.agentInput.MovementVector.x) > 0)
+            Mathf.Abs(agent.agentInput.MovementVector.x) > 0 &&
+            agent.characterSelected.characterType == CharacterType.Hithat)
         {
             agent.TransitionToState(agent.stateFactory.GetState(StateType.Slide));
         }

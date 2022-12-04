@@ -83,9 +83,14 @@ public class AttackState : State
         // dont allow jumping
     }
 
+    protected override void HandleSwapAgent()
+    {
+        // dont allow jumping
+    }
+
     protected override void HandleJumpReleased()
     {
-
+        // dont allow jumping
     }
 
     protected override void HandleMovement(Vector2 obj)
