@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonStart: {fileID: 271934815}
   buttonNewGame: {fileID: 707951569}
-  sceneNewGame: SampleScene 1
+  sceneNewGame: FinalLevel
   sceneLevelSelect: LevelSelect
   sceneMainMenu: MainMenu
 --- !u!1 &1225832776
