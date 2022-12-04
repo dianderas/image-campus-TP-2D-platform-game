@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: DrumsAgentData
   m_EditorClassIdentifier: 
   health: 5
-  currentHealth: 5
+  currentHealth: 4
   maxSpeed: 5
   acceleration: 50
   deacceleration: 50
-  jumpForce: 7.5
-  lowJumpMultiplier: 2
-  gravityModified: 0.5
+  jumpForce: 7
+  lowJumpMultiplier: 0.5
+  gravityModified: 2
   wallSlideSpeed: 1
   wallJumpForce: 10
   wallJumpAngle: {x: 0, y: 0}
