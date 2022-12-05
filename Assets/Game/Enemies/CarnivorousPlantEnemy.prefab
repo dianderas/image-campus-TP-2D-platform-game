@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: <OnRespawnRequired>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 129223268648345133, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 129223268648345136, guid: 33df43505db7377489b18d3e7c39a7d7, type: 3}
       propertyPath: m_Name
       value: Agent

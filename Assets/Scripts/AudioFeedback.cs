@@ -14,8 +14,6 @@ public class AudioFeedback : MonoBehaviour
         if (clip == null)
             return;
 
-
-        Debug.Log("PlayClip");
         targetAudioSource.volume = this.volume;
         targetAudioSource.PlayOneShot(clip);
     }

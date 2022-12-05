@@ -16,7 +16,6 @@ public class SwitchDoor : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("OnTriggerStay2D");
         if (other.CompareTag("Box"))
         {
             isLocked = false;
