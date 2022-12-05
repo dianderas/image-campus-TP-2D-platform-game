@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HihatAgentData
   m_EditorClassIdentifier: 
   health: 3
-  currentHealth: 1
+  currentHealth: 2
   maxSpeed: 7.5
   acceleration: 50
   deacceleration: 50
-  jumpForce: 8
+  jumpForce: 8.5
   lowJumpMultiplier: 5
   gravityModified: 0.2
   wallSlideSpeed: 2
